@@ -1,0 +1,14 @@
+{% extends 'layouts/base-layout.html' %}
+
+{% block title_layout %} 
+   News |
+  {% block title %} BLOG {% endblock title %} 
+    
+{% endblock title_layout %}
+
+{% block content_layout %} 
+  {% include 'commons/header.html' %}
+
+  {% block content %} Carga un Contenido! {% endblock content %}
+
+{% endblock content_layout %}
