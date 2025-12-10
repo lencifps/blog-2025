@@ -1,15 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>{% block title_layout %}   {% endblock title_layout %}</title>
-
-</head>
-<body>
-    {% block content_layout %}   {% endblock content_layout %}
-        
-</body>
+    <link 
+    rel="shortcut icon" 
+    href="{% static 'favicon.ico' %}" 
+    type="image/x-icon"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>
+      {% block title_layout %} BLOG {% endblock title_layout %}
+    </title>
+  </head>
+  <body class="bg-gray-400">
+    {% block content_layout %} {% endblock content_layout %}
+  </body>
 </html>
+
