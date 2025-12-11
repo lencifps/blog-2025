@@ -135,3 +135,17 @@ git clone URL_REPO .
 django-admin startproject blog
 
 python blog/manage.py runserver
+
+pip install python-dotenv
+
+pip install mysqlclient
+
+pip install -r requirements.txt
+
+python blog/manage.py startapp user "./blog/apps/user"
+
+python blog/manage.py startapp post "./blog/apps/post"
+
+python blog/manage.py makemigrations
+
+python blog/manage.py migrate

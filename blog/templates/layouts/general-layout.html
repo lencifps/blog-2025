@@ -8,7 +8,10 @@
 
 {% block content_layout %} 
   {% include 'commons/header.html' %}
-
+ 
+  <main class="bg-red-900">
   {% block content %} Carga un Contenido! {% endblock content %}
-
+  </main>
+  
+ {% include 'commons/footer.html' %}
 {% endblock content_layout %}
