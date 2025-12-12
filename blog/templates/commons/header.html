@@ -1,13 +1,5 @@
-<header class="bg-green-900">
-    <div>
-        <nav>
-            
-            <ul>
-                <li><a href="{% url 'home' %}">Inicio</a></li>
-                <li><a href="{% url 'post:post-list' %}">Ver Posts</a></li>
-                <li><a href="{% url 'user:user-profile' %}">Perfil del Usuario</a></li>
-            </ul>
-
-        </nav>    
-    </div>
+<header class="h-14 flex justify-center items-center shadow-md">
+  <div class="container flex justify-center items-center mx-4 md:mx-8 lg:mx-40">
+    {% include 'ui/navbar.html' %}        
+  </div>
 </header>    
