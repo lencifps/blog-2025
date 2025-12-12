@@ -149,3 +149,5 @@ python blog/manage.py startapp post "./blog/apps/post"
 python blog/manage.py makemigrations
 
 python blog/manage.py migrate
+
+prueba de conexión (nico)
