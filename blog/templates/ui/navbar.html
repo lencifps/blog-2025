@@ -1,0 +1,8 @@
+<nav class="w-full flex justify-between items-center bg-green-200">
+  <h1 class="font-extrabold text-sm md:text-base lg:text-2xl"> Blog | Noticias </h1>
+  <ul class="flex gap-3 md:gap-8 lg:gap-12">
+      <li><a href="{% url 'home' %}">Inicio</a></li>
+      <li><a href="{% url 'post:post-list' %}">Ver Posts</a></li>
+      <li><a href="{% url 'user:user-profile' %}">Perfil</a></li>
+  </ul>
+</nav>
