@@ -30,3 +30,12 @@ class User(AbstractUser):
     def get_avatar_url(self):
         if self.avatar:
              return self.avatar.url
+        
+    
+    @property
+    def is_colaborador(self):
+        return self.groups.filter(name="Colaborador").exists()
+    
+    @property
+    def is_registrado(self):
+        return self.groups.filter(name="Registrado").exists()
