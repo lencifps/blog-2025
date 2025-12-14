@@ -4,10 +4,10 @@
 
 {% block content %} 
 
-<div class= "flex flex-col justify-center items-center gap-6">
+<div class= "flex flex-col justify-center items-center gap-6 mt-8 lg:mt-0 mb-8 lg:mb-0 min-h-[calc(100dvh-56px-56px)]">
 
    <div class="flex flex-col justify-center items-center gap-1">
-    <h2 class="font-extrabold text-sm md:text-base lg:text-4xl hover:text-green-500"> Bienvenido a nuestro Blog de Noticias </h2>
+    <h2 class="font-extrabold text-sm md:text-base lg:text-4xl hover:text-green-500 transition duration-200 ease-in-out"> Bienvenido a nuestro Blog de Noticias </h2>
     <p class="text-sm text-gray-500"> Mantenete informado sobre las ultimas novedades de la provincia del Chaco. </p>
    </div>
 
@@ -15,6 +15,39 @@
       <input type="text" placeholder="Buscar" class="w-full h-full focus:outline-none">
       🔎
     </div>
+
+
+    <section class="max-w-5x1 flex flex-col lg:flex-row gap-6">
+      <article class="flex flex-col gap-2">
+        <img src="https://www.ngfederal.ar/multimedia/imagenes/fotos/2025-12-11/503232_grande.jpg" alt="noticia" class="h-[280px] w-[500px] rounded-md">
+        <div class="w-[90px] bg-blue-500 p-1 flex items-center justify-center rounded-md text-white">
+        <span> Provinciales </span>
+        </div>
+        <strong class="font-bold text-2xl"> Un tren de cargas descarriló y obstruyó la vía en la provincia del Chaco </strong>
+        <div class="flex flex-col text-sm text-gray-600 gap-2">
+        <span> 11 de diciembre de 2025 </span>
+        <p> Un tren de cargas que transportaba productos agrícolas descarriló en la provincia del Chaco, causando interrupciones en el tráfico ferroviario y daños a la infraestructura. Las autoridades están investigando las causas del accidente y trabajando para restablecer el servicio lo antes posible. Afortunadamente, no se reportaron heridos. </p>
+        </div>
+      </article>
+      <article class="flex flex-col gap-2">
+        <img src="https://www.ngfederal.ar/multimedia/imagenes/fotos/2025-12-11/503232_grande.jpg" alt="noticia" class="h-[280px] w-[500px] rounded-md">
+        <div class="w-[90px] bg-blue-500 p-1 flex items-center justify-center rounded-md text-white">
+        <span> Provinciales </span>
+        </div>
+        <strong class="font-bold text-2xl"> Un tren de cargas descarriló y obstruyó la vía en la provincia del Chaco </strong>
+        <div class="flex flex-col text-sm text-gray-600 gap-2">
+        <span> 11 de diciembre de 2025 </span>
+        <p> Un tren de cargas que transportaba productos agrícolas descarriló en la provincia del Chaco, causando interrupciones en el tráfico ferroviario y daños a la infraestructura. Las autoridades están investigando las causas del accidente y trabajando para restablecer el servicio lo antes posible. Afortunadamente, no se reportaron heridos. </p>
+        </div>
+      </article>
+      
+    </section>
+       
+        
+
+      
+
+
 
 </div>
 
