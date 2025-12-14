@@ -9,6 +9,9 @@
     href="{% static 'favicon.ico' %}" 
     type="image/x-icon"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <script src="{% static 'js/tailwind.js' %}"></script>
     <title>
       {% block title_layout %} BLOG {% endblock title_layout %}
@@ -17,10 +20,11 @@
       @theme {
         --color-primary: #037ee2dc;
         --color-secondary: #8f8f9bff;
+        --font-opensans: "Open Sans", sans-serif;
       }
     </style>
   </head>
-  <body class="min-w-[280px]">
+  <body class="min-w-[280px] font-opensans">
     {% block content_layout %} {% endblock content_layout %}
   </body>
 </html>
