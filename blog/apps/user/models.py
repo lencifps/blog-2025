@@ -34,8 +34,12 @@ class User(AbstractUser):
     
     @property
     def is_colaborador(self):
-        return self.groups.filter(name="Colaborador").exists()
+        return self.groups.filter(name="colaborador").exists()
     
     @property
     def is_registrado(self):
-        return self.groups.filter(name="Registrado").exists()
+        return self.groups.filter(name="registrado").exists()
+    
+    @property
+    def is_moderador(self):
+        return self.groups.filter(name="moderador").exists()
