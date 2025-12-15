@@ -82,7 +82,7 @@ def get_image_filename(instance, filename):
 
 class PostImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    image = models.ImageField(upload_to=get_image_filename, default="post/default/post-default.jpg")
+    image = models.ImageField(upload_to=get_image_filename, default=settings.POST_DEFAULT_IMAGE)
     active = models.BooleanField(default=True)
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
