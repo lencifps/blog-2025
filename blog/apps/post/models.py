@@ -83,8 +83,10 @@ def get_image_filename(instance, filename):
 class PostImage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     image = models.ImageField(upload_to=get_image_filename, default="post/default/post-default.jpg")
-    
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(auto_now=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='images')
 
     def __str__(self):
-        return self.id
+        return f"{self.id}"
