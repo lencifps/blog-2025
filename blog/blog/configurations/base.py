@@ -73,6 +73,9 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 AUTH_USER_MODEL = "user.User"
 
+POST_DEFAULT_IMAGE = "post/default/post-default.png"
+AVATAR_DEFAULT_IMAGE = "user/default/avatar-default.png"
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
