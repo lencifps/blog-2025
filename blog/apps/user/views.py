@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView, CreateView
-from django.contrib.auth.views import LoginView as LoginViewDjango
+from django.contrib.auth.views import LoginView as LoginViewDjango, LogoutView as LogoutViewDjango
 from django.contrib.auth.models import Group
 from apps.user.forms import LoginForm, RegisterForm
 from django.urls import reverse_lazy
@@ -15,6 +15,7 @@ class LoginView(LoginViewDjango):
     
     def get_success_url(self):
         next_url = self.request.GET.get('next')
+        
         if next_url:
             return next_url
         
@@ -34,3 +35,12 @@ class RegisterView(CreateView):
 
         return response
 
+
+class LogoutView(LogoutViewDjango):
+    def get_success_url(self):
+        next_url = self.request.GET.get('next')
+
+        if next_url:
+            return next_url
+        
+        return reverse_lazy('home')

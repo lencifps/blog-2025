@@ -7,7 +7,7 @@ from apps.user.models import User
 class RegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['email']
+        fields = ['username', 'email']
 
 
 class LoginForm(AuthenticationForm):
