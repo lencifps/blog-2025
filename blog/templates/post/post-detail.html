@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Título del Post{% endblock %}
+
+{% block content %}
+<article>
+    <div class="mb-4">
+        <a href="#" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+    </div>
+    
+    <header class="mb-4">
+        <h1 class="display-5">Título del Post</h1>
+        <div class="text-muted mb-3">
+            <i class="fas fa-user"></i> Por <strong>Autor</strong> • 
+            <i class="far fa-calendar"></i> <time>14 de Diciembre, 2025</time> • 
+            <i class="fas fa-tag"></i> <span class="badge bg-primary">Categoría</span>
+        </div>
+    </header>
+    
+    <div class="mb-4">
+        <img src="https://via.placeholder.com/800x400" class="img-fluid rounded" alt="Imagen del post">
+    </div>
+    
+    <div class="post-content">
+        <p>Este es el contenido detallado del post. Aquí irá el cuerpo completo del artículo.</p>
+        
+        <p>Puedes usar diferentes formatos, imágenes, listas, y más.</p>
+        
+        <h3>Subtítulo</h3>
+        <p>Más contenido explicativo...</p>
+        
+        <pre><code># Ejemplo de código
+def hello_world():
+    print("¡Hola desde Django!")</code></pre>
+        
+        <p>Conclusión del post.</p>
+    </div>
+    
+    <hr class="my-5">
+    
+    <!-- Comentarios (se implementarán luego) -->
+    <section>
+        <h3><i class="fas fa-comments"></i> Comentarios (0)</h3>
+        <div class="alert alert-info">
+            Los comentarios se habilitarán cuando implementes el sistema de usuarios.
+        </div>
+    </section>
+</article>
+{% endblock %}

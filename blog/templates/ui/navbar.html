@@ -1,8 +1,117 @@
-<nav class="w-full flex justify-between items-center bg-green-200">
-  <h1 class="font-extrabold text-sm md:text-base lg:text-2xl"> Blog | Noticias </h1>
-  <ul class="flex gap-3 md:gap-8 lg:gap-12">
-      <li><a href="{% url 'home' %}">Inicio</a></li>
-      <li><a href="{% url 'post:post-list' %}">Ver Posts</a></li>
-      <li><a href="{% url 'user:user-profile' %}">Perfil</a></li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <i class="fas fa-blog"></i> {{ blog_name|default:"Mi Blog" }}
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'post_list' %}">
+                        <i class="fas fa-newspaper"></i> Blog
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-folder"></i> Categorías
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for category in categories %}
+                        <li><a class="dropdown-item" href="{% url 'category_posts' category.slug %}">{{ category.name }}</a></li>
+                        {% empty %}
+                        <li><a class="dropdown-item" href="#">Sin categorías</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">
+                        <i class="fas fa-info-circle"></i> Acerca de
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">
+                        <i class="fas fa-envelope"></i> Contacto
+                    </a>
+                </li>
+            </ul>
+            
+            <ul class="navbar-nav">
+                <!-- Búsqueda -->
+                <li class="nav-item">
+                    <form class="d-flex" method="GET" action="{% url 'post_list' %}">
+                        <input class="form-control me-2" type="search" name="q" placeholder="Buscar posts...">
+                        <button class="btn btn-outline-light" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </li>
+                
+                <!-- Lógica de usuarios -->
+                {% if user.is_authenticated %}
+                    {% if user.is_staff or user.profile.role == 'collaborator' %}
+                    <!-- Colaborador/Admin -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-tie"></i> {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{% url 'create_post' %}">
+                                <i class="fas fa-plus"></i> Nuevo Post
+                            </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="fas fa-list"></i> Mis Posts
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">
+                                <i class="fas fa-cogs"></i> Admin Panel
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">
+                                <i class="fas fa-user"></i> Mi Perfil
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <!-- Usuario registrado normal -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i> {{ user.username }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="{% url 'profile' %}">
+                                <i class="fas fa-user"></i> Mi Perfil
+                            </a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            </a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                {% else %}
+                    <!-- Visitante -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">
+                            <i class="fas fa-user-plus"></i> Registrarse
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 </nav>

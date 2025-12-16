@@ -1,0 +1,322 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Acerca de - {{ blog_name|default:"Blog Django" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="text-center mb-5">
+    <div class="d-inline-block p-3 bg-primary bg-opacity-10 rounded-circle mb-3">
+        <i class="fas fa-info-circle fa-4x text-primary"></i>
+    </div>
+    <h1 class="display-3 fw-bold mb-3">Acerca de Nosotros</h1>
+    <p class="lead text-muted">Conoce más sobre nuestro proyecto y equipo</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        
+        <!-- Descripción del blog -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body p-5">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="fw-bold mb-4">
+                            <i class="fas fa-book-open text-primary"></i> Nuestra Historia
+                        </h2>
+                        <p class="lead mb-3">
+                            Este blog fue desarrollado como proyecto final del curso de Django, 
+                            representando la culminación de meses de aprendizaje y dedicación.
+                        </p>
+                        <p class="text-muted">
+                            Es una aplicación web completa que implementa todas las funcionalidades 
+                            requeridas para un sistema de blogging moderno y profesional. Nuestro 
+                            objetivo es crear un espacio donde los usuarios puedan compartir 
+                            conocimientos, experiencias y aprender unos de otros a través de artículos 
+                            y comentarios constructivos.
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-newspaper fa-8x text-primary opacity-25"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Misión y Visión -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-bullseye fa-2x text-primary"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0">Nuestra Misión</h3>
+                        </div>
+                        <p class="text-muted mb-0">
+                            Proporcionar una plataforma de calidad donde los desarrolladores y 
+                            entusiastas de la tecnología puedan compartir conocimientos, 
+                            experiencias y mejores prácticas en un ambiente colaborativo y 
+                            profesional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-eye fa-2x text-success"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0">Nuestra Visión</h3>
+                        </div>
+                        <p class="text-muted mb-0">
+                            Convertirnos en una referencia educativa en desarrollo web con Django, 
+                            creando una comunidad activa que impulse el aprendizaje continuo y 
+                            la innovación tecnológica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Características Principales -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-white border-0 pt-4 px-4">
+                <h2 class="fw-bold mb-0">
+                    <i class="fas fa-star text-warning"></i> Características Principales
+                </h2>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-success bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-users fa-lg text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Tres Perfiles de Usuario</h5>
+                                <p class="text-muted mb-0">Sistema de roles completo con permisos diferenciados</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-primary bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-edit fa-lg text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">CRUD Completo de Posts</h5>
+                                <p class="text-muted mb-0">Crear, leer, actualizar y eliminar artículos fácilmente</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-info bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-comments fa-lg text-info"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Sistema de Comentarios</h5>
+                                <p class="text-muted mb-0">Interacción y discusión en cada artículo publicado</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-warning bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-tags fa-lg text-warning"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Categorías Organizadas</h5>
+                                <p class="text-muted mb-0">Contenido clasificado para fácil navegación</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-danger bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-filter fa-lg text-danger"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Filtros Avanzados</h5>
+                                <p class="text-muted mb-0">Búsqueda y filtrado inteligente de contenido</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-secondary bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-mobile-alt fa-lg text-secondary"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Diseño Responsive</h5>
+                                <p class="text-muted mb-0">Experiencia óptima en todos los dispositivos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-dark bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-cogs fa-lg text-dark"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Panel de Administración</h5>
+                                <p class="text-muted mb-0">Gestión completa desde una interfaz intuitiva</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="bg-success bg-opacity-10 p-2 rounded me-3">
+                                <i class="fas fa-lock fa-lg text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-2">Autenticación Segura</h5>
+                                <p class="text-muted mb-0">Sistema robusto de registro y login de usuarios</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tecnologías utilizadas -->
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header bg-white border-0 pt-4 px-4">
+                <h2 class="fw-bold mb-0">
+                    <i class="fas fa-code text-info"></i> Stack Tecnológico
+                </h2>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4 text-center">
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fab fa-python fa-4x text-primary mb-3"></i>
+                            <h5 class="fw-bold mb-2">Python</h5>
+                            <p class="text-muted small mb-0">v3.11+</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fas fa-leaf fa-4x text-success mb-3"></i>
+                            <h5 class="fw-bold mb-2">Django</h5>
+                            <p class="text-muted small mb-0">v5.2</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fab fa-html5 fa-4x text-danger mb-3"></i>
+                            <h5 class="fw-bold mb-2">HTML5</h5>
+                            <p class="text-muted small mb-0">Semántico</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fab fa-css3-alt fa-4x text-info mb-3"></i>
+                            <h5 class="fw-bold mb-2">CSS3</h5>
+                            <p class="text-muted small mb-0">Bootstrap 5</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fab fa-js fa-4x text-warning mb-3"></i>
+                            <h5 class="fw-bold mb-2">JavaScript</h5>
+                            <p class="text-muted small mb-0">ES6+</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fas fa-database fa-4x text-secondary mb-3"></i>
+                            <h5 class="fw-bold mb-2">SQLite</h5>
+                            <p class="text-muted small mb-0">Base de Datos</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fab fa-bootstrap fa-4x" style="color: #7952b3;" mb-3></i>
+                            <h5 class="fw-bold mb-2">Bootstrap</h5>
+                            <p class="text-muted small mb-0">Framework CSS</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="tech-card p-4 bg-light rounded-3">
+                            <i class="fas fa-font-awesome-flag fa-4x" style="color: #339af0;" mb-3></i>
+                            <h5 class="fw-bold mb-2">Font Awesome</h5>
+                            <p class="text-muted small mb-0">Iconos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Valores -->
+        <div class="card border-0 shadow-sm mb-4" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="card-body p-5 text-white">
+                <h2 class="fw-bold mb-4 text-center">
+                    <i class="fas fa-heart"></i> Nuestros Valores
+                </h2>
+                <div class="row g-4">
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-graduation-cap fa-3x mb-3"></i>
+                        <h5 class="fw-bold mb-2">Aprendizaje</h5>
+                        <p class="opacity-75">Compromiso con el crecimiento continuo y la educación</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-handshake fa-3x mb-3"></i>
+                        <h5 class="fw-bold mb-2">Colaboración</h5>
+                        <p class="opacity-75">Trabajo en equipo y apoyo mutuo en la comunidad</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-lightbulb fa-3x mb-3"></i>
+                        <h5 class="fw-bold mb-2">Innovación</h5>
+                        <p class="opacity-75">Búsqueda constante de mejoras y nuevas soluciones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Equipo -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-5">
+                <h2 class="fw-bold mb-4 text-center">
+                    <i class="fas fa-users text-secondary"></i> Nuestro Equipo
+                </h2>
+                <p class="text-center text-muted mb-4">
+                    Este proyecto fue desarrollado por estudiantes del curso de Django, 
+                    aplicando los conocimientos adquiridos durante el programa de formación.
+                </p>
+                <div class="alert alert-primary border-0 text-center">
+                    <i class="fas fa-info-circle fa-2x mb-3"></i>
+                    <h5 class="fw-bold mb-2">¿Quieres conocer más?</h5>
+                    <p class="mb-3">Para conocer a los integrantes específicos de este proyecto y más detalles sobre el desarrollo, consulta nuestra documentación oficial.</p>
+                    <a href="{% url 'contact' %}" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Contáctanos
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.tech-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.tech-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background-color: #fff !important;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+</style>
+{% endblock %}

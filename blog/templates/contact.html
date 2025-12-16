@@ -1,0 +1,288 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Contacto - {{ blog_name|default:"Blog Django" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="text-center mb-5">
+    <div class="d-inline-block p-3 bg-primary bg-opacity-10 rounded-circle mb-3">
+        <i class="fas fa-paper-plane fa-4x text-primary"></i>
+    </div>
+    <h1 class="display-3 fw-bold mb-3">Contactanos</h1>
+    <p class="lead text-muted">¿Tenés preguntas o sugerencias? ¡Estamos aquí para ayudarte!</p>
+</div>
+
+<div class="row">
+    <div class="col-lg-10 mx-auto">
+        <div class="row g-4">
+            
+            <!-- Formulario de contacto -->
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white border-0 pt-4 px-4">
+                        <h3 class="fw-bold mb-1">
+                            <i class="fas fa-envelope text-primary"></i> Envíanos un Mensaje
+                        </h3>
+                        <p class="text-muted mb-0">Completá el formulario y te responderemos pronto</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <form method="post" action="{% url 'contact' %}" id="contactForm">
+                            {% csrf_token %}
+                            
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="name" class="form-label fw-bold">
+                                        <i class="fas fa-user text-primary"></i> Nombre Completo
+                                    </label>
+                                    <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Juan Pérez" required>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label fw-bold">
+                                        <i class="fas fa-envelope text-primary"></i> Correo Electrónico
+                                    </label>
+                                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="juan@ejemplo.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="subject" class="form-label fw-bold">
+                                    <i class="fas fa-tag text-primary"></i> Asunto
+                                </label>
+                                <select class="form-select form-select-lg" id="subject" name="subject" required>
+                                    <option value="">Selecciona un asunto...</option>
+                                    <option value="general">Consulta General</option>
+                                    <option value="technical">Soporte Técnico</option>
+                                    <option value="collaboration">Propuesta de Colaboración</option>
+                                    <option value="feedback">Feedback o Sugerencia</option>
+                                    <option value="report">Reportar un Problema</option>
+                                    <option value="other">Otro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="message" class="form-label fw-bold">
+                                    <i class="fas fa-comment-dots text-primary"></i> Mensaje
+                                </label>
+                                <textarea class="form-control form-control-lg" id="message" name="message" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                                <div class="form-text">
+                                    <i class="fas fa-info-circle"></i> Mínimo 10 caracteres
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane"></i> Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="card border-0 shadow-sm mt-4">
+                    <div class="card-body p-4">
+                        <h4 class="fw-bold mb-4">
+                            <i class="fas fa-question-circle text-warning"></i> Preguntas Frecuentes
+                        </h4>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item border-0 mb-2">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        ¿Cuánto tiempo tardan en responder?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Generalmente respondemos en un plazo de 24 a 48 horas hábiles. Los mensajes urgentes son priorizados.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0 mb-2">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        ¿Cómo puedo colaborar con el blog?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        ¡Nos encantaría contar con tu colaboración! Envianos un mensaje con "Propuesta de Colaboración" como asunto y contanos sobre tu idea.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item border-0">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        ¿Puedo sugerir temas para artículos?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        ¡Por supuesto! Valoramos las sugerencias de nuestra comunidad. Usá el formulario con el asunto "Feedback o Sugerencia".
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar - Información de contacto -->
+            <div class="col-lg-4">
+                
+                <!-- Información de contacto -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4">
+                            <i class="fas fa-info-circle text-primary"></i> Información de Contacto
+                        </h5>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="bg-danger bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-map-marker-alt fa-lg text-danger"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Ubicación</h6>
+                                <p class="text-muted mb-0 small">Chaco, Argentina</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-envelope fa-lg text-primary"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Email</h6>
+                                <a href="mailto:contacto@blogdjango.com" class="text-decoration-none text-muted small">
+                                    contacto@blogdjango.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="bg-success bg-opacity-10 p-3 rounded me-3">
+                                <i class="fas fa-phone fa-lg text-success"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Teléfono</h6>
+                                <a href="tel:+543621234567" class="text-decoration-none text-muted small">
+                                    +54 362 123-4567
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Redes Sociales -->
+                <div class="card border-0 shadow-sm mb-3">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold mb-4">
+                            <i class="fas fa-share-alt text-primary"></i> Seguinos
+                        </h5>
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-outline-primary">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="#" class="btn btn-outline-info">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                            <a href="#" class="btn btn-outline-danger">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                            <a href="#" class="btn btn-outline-primary">
+                                <i class="fab fa-linkedin-in"></i> LinkedIn
+                            </a>
+                            <a href="#" class="btn btn-outline-dark">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Horario de atención -->
+                <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="card-body p-4 text-white">
+                        <h5 class="fw-bold mb-3">
+                            <i class="fas fa-clock"></i> Horario de Atención
+                        </h5>
+                        <div class="mb-2">
+                            <small class="d-flex justify-content-between">
+                                <span>Lunes - Viernes:</span>
+                                <span class="fw-bold">9:00 - 18:00</span>
+                            </small>
+                        </div>
+                        <div class="mb-2">
+                            <small class="d-flex justify-content-between">
+                                <span>Sábados:</span>
+                                <span class="fw-bold">10:00 - 14:00</span>
+                            </small>
+                        </div>
+                        <div>
+                            <small class="d-flex justify-content-between">
+                                <span>Domingos:</span>
+                                <span class="fw-bold">Cerrado</span>
+                            </small>
+                        </div>
+                        <hr class="bg-white opacity-25 my-3">
+                        <p class="small mb-0 opacity-75">
+                            <i class="fas fa-info-circle"></i> Zona horaria: GMT-3 (Argentina)
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Mapa (opcional) -->
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body p-0">
+                <div class="ratio ratio-21x9">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d437754.4607827952!2d-59.244447199999994!3d-27.4605963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c5f14542e29%3A0x5397a9ee0c1f0c95!2sChaco%2C%20Argentina!5e0!3m2!1ses!2sar!4v1234567890" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.form-control:focus,
+.form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: #667eea;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(102, 126, 234, 0.25);
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Validación del formulario
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    const message = document.getElementById('message').value;
+    if (message.length < 10) {
+        e.preventDefault();
+        alert('El mensaje debe tener al menos 10 caracteres.');
+        return false;
+    }
+});
+</script>
+{% endblock %}

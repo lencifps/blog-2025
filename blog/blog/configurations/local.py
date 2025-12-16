@@ -1,17 +1,15 @@
 from .base import *
 
+# SECRET_KEY para desarrollo
+SECRET_KEY = 'django-insecure-desarrollo-' + 'clave-tempora-12345-cambiar-en-produccion'
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
-
-# # Database
-## https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-
-
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -19,4 +17,4 @@ DATABASES = {
     }
 }
 
-os.environ['DJANGO_PORT'] = "3000"   
+os.environ['DJANGO_PORT'] = "3000"

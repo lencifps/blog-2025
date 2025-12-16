@@ -1,0 +1,37 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Inicio - Blog Desinformatorio{% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4">¡Blog Desinformatorio Funcionando!</h1>
+    <p class="lead">Servidor activo en http://127.0.0.1:3000/</p>
+    
+    <div class="mt-4">
+        <a href="/admin/" class="btn btn-primary btn-lg me-2">
+            <i class="fas fa-cogs"></i> Panel de Administración
+        </a>
+        <a href="/blog/" class="btn btn-outline-secondary btn-lg">
+            <i class="fas fa-book"></i> Ver Blog
+        </a>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <i class="fas fa-check-circle"></i> Estado del Sistema
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check text-success"></i> Django 5.2 funcionando</li>
+                    <li><i class="fas fa-check text-success"></i> Entorno virtual activado</li>
+                    <li><i class="fas fa-check text-success"></i> Base de datos SQLite lista</li>
+                    <li><i class="fas fa-check text-success"></i> Templates cargados</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

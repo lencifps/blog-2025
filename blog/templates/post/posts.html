@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Todas las Noticias - Portal de Noticias{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Encabezado de página -->
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Noticias</li>
+                </ol>
+            </nav>
+            <h1 class="fw-bold text-primary">Todas las Noticias</h1>
+            <p class="lead">Explora todas nuestras publicaciones organizadas por fecha</p>
+        </div>
+        <div class="col-auto d-flex align-items-center">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar noticias...">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-primary active">Todas</button>
+                <button class="btn btn-outline-secondary">Política</button>
+                <button class="btn btn-outline-secondary">Economía</button>
+                <button class="btn btn-outline-secondary">Deportes</button>
+                <button class="btn btn-outline-secondary">Tecnología</button>
+                <button class="btn btn-outline-secondary">Cultura</button>
+                <button class="btn btn-outline-secondary">
+                    <i class="fas fa-calendar me-1"></i>Filtrar por fecha
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Listado de noticias -->
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-12 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="row g-0">
+                    <!-- Imagen -->
+                    <div class="col-md-4">
+                        <img src="{% if post.image %}{{ post.image.url }}{% else %}{% static 'assets/img/post-default.jpg' %}{% endif %}" 
+                             class="img-fluid rounded-start h-100" alt="{{ post.title }}" style="object-fit: cover; min-height: 250px;">
+                    </div>
+                    
+                    <!-- Contenido -->
+                    <div class="col-md-8">
+                        <div class="card-body d-flex flex-column h-100">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-primary">{{ post.category|default:"General" }}</span>
+                                <small class="text-muted">
+                                    <i class="far fa-calendar me-1"></i>{{ post.created_at|date:"d M Y" }}
+                                </small>
+                            </div>
+                            
+                            <h3 class="card-title h4 fw-bold">{{ post.title }}</h3>
+                            <p class="card-text flex-grow-1">{{ post.excerpt|default:post.content|truncatechars:200 }}</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    {% if post.author.avatar %}
+                                    <img src="{{ post.author.avatar.url }}" class="rounded-circle me-2" width="30" height="30" alt="{{ post.author.username }}">
+                                    {% else %}
+                                    <i class="fas fa-user-circle me-2 text-secondary"></i>
+                                    {% endif %}
+                                    <small class="text-muted">Por {{ post.author.username|default:"Redacción" }}</small>
+                                </div>
+                                
+                                <div class="d-flex gap-3">
+                                    <small class="text-muted">
+                                        <i class="far fa-comment me-1"></i> {{ post.comment_count|default:"0" }} comentarios
+                                    </small>
+                                    <a href="{% url 'post-detail' post.id %}" class="btn btn-outline-primary btn-sm">
+                                        Leer más <i class="fas fa-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center py-5">
+            <i class="fas fa-newspaper fa-4x text-muted mb-3"></i>
+            <h3 class="text-muted">No hay noticias publicadas</h3>
+            <p>Vuelve más tarde para ver las últimas noticias.</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Paginación -->
+    {% if is_paginated %}
+    <nav aria-label="Paginación de noticias" class="mt-5">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    <i class="fas fa-chevron-left"></i> Anterior
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link"><i class="fas fa-chevron-left"></i> Anterior</span>
+            </li>
+            {% endif %}
+            
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    Siguiente <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Siguiente <i class="fas fa-chevron-right"></i></span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Script para manejar filtros
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.btn-outline-secondary');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover clase active de todos los botones
+            document.querySelectorAll('.btn-outline-primary, .btn-outline-secondary').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.classList.contains('btn-outline-secondary')) {
+                    btn.classList.add('btn-outline-secondary');
+                } else {
+                    btn.classList.add('btn-outline-primary');
+                }
+            });
+            
+            // Agregar active al botón clickeado
+            this.classList.remove('btn-outline-secondary');
+            this.classList.add('btn-outline-primary', 'active');
+            
+            // Aquí iría la lógica para filtrar las noticias
+            console.log('Filtrar por:', this.textContent.trim());
+        });
+    });
+});
+</script>
+{% endblock %}
