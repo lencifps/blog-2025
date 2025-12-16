@@ -1,0 +1,15 @@
+{% extends 'layouts/auth-layout.html' %}
+
+
+{% block title %}  Iniciar Sesión {% endblock title %}
+
+{% block content %}
+ <div class= "rounded-lg border w-full max-w-lg flex flex-col justify-center gap-4 bg-purple-200">
+    <h2 class="font-bold text-center"> Iniciar Sesión </h2>
+    <form method="post" class= "flex flex-col gap-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="w-full bg-red-400 px-5 py-2 rounded-md" type="submit">Ingresar</button>    
+    </form>
+ </div>
+{% endblock content %}

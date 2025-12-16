@@ -151,3 +151,18 @@ python blog/manage.py makemigrations
 python blog/manage.py migrate
 
 prueba de conexión (nico)
+
+
+## Roles y permisos
+
+Registrado: 
+Puede crear, editar y eliminar sus propios comentarios en el post.
+
+Colaborador: 
+Puede crear, editar y eliminar sus propios posts.
+Puede crear, editar y eliminar sus comentarios y tambien eliminar los comentarios en sus propios posts.
+
+Moderador:
+Puede crear, editar y eliminar sus propios posts.
+Puede crear, editar y eliminar sus comentarios y tambien eliminar los comentarios en sus propios posts o posts ajenos.
+

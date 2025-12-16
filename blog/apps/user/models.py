@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 import uuid
 import os
 
@@ -18,9 +19,9 @@ def get_avatar_filename(instance, filename):
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    alias = models.CharField(max_length=20, unique=True, null=False, blank=True)
+    alias = models.CharField(max_length=20, blank=True)
     avatar = models.ImageField(
-        upload_to=get_avatar_filename, default="user/default/avatar-default.png"
+        upload_to=get_avatar_filename, default=settings.AVATAR_DEFAULT_IMAGE
     )
   
 
@@ -30,3 +31,16 @@ class User(AbstractUser):
     def get_avatar_url(self):
         if self.avatar:
              return self.avatar.url
+        
+    
+    @property
+    def is_colaborador(self):
+        return self.groups.filter(name="colaborador").exists()
+    
+    @property
+    def is_registrado(self):
+        return self.groups.filter(name="registrado").exists()
+    
+    @property
+    def is_moderador(self):
+        return self.groups.filter(name="moderador").exists()
