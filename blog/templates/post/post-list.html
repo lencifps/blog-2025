@@ -1,20 +1,29 @@
+{% extends "base.html" %}
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1><i class="fas fa-newspaper"></i> Todos los Posts</h1>
-    <a href="#" class="btn btn-success">
-        <i class="fas fa-plus"></i> Nuevo Post
-    </a>
-</div>
+{% block content %}
+<section class="container mt-5">
 
-<div class="row">
-    <!-- Posts se cargarán aquí dinámicamente -->
-    <div class="col-12">
-        <div class="alert alert-warning">
-            <i class="fas fa-info-circle"></i> 
-            No hay posts publicados aún. 
-            <a href="{% url 'admin:index' %}" class="alert-link">
-                ¡Crea tu primer post desde el panel de administración!
+    <h1 class="mb-4">Blog</h1>
+
+    {% if posts %}
+        <div class="list-group">
+            {% for post in posts %}
+                <a href="{% url 'post:detail' post.pk %}" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ post.title }}</h5>
+                    <small>{{ post.created_at|date:"d M Y" }}</small>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center p-5 border rounded">
+            <h3>Aún no hay posts</h3>
+            <p>Comenzá creando el primero</p>
+
+            <a href="{% url 'post:create' %}" class="btn btn-primary mt-3">
+                Crear primer post
             </a>
         </div>
-    </div>
-</div>
+    {% endif %}
+
+</section>
+{% endblock %}
